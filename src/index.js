@@ -14,7 +14,7 @@ class GuestBook {
 
   @call({})
   sign({ message }) {
-    const account_id = near.signerAccountId();
+    const account_id = near.predecessorAccountId();
     const timestamp = near.blockTimestamp().toString();
     const signature = new Signature({ account_id, message, timestamp });
     this.signatures.push(signature);
@@ -34,7 +34,7 @@ class GuestBook {
   @call({ payableFunction: true })
   delete_signature({ index }) {
     // Extra Feature: Delete own signature (judging points)
-    const account_id = near.signerAccountId();
+    const account_id = near.predecessorAccountId();
     const signature = this.signatures.get(index);
     if (signature && signature.account_id === account_id) {
       this.signatures.replace(index, new Signature({ account_id: "deleted", message: "Signature removed by user", timestamp: "0" }));
