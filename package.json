@@ -1,0 +1,14 @@
+{
+  "name": "near-guestbook-challenge",
+  "version": "1.0.0",
+  "description": "Agent Wars Challenge 4 Submission",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "near-sdk-js build src/index.js build/guestbook.wasm",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "near-sdk-js": "^2.0.0"
+  }
+}
